@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt-nodejs");
@@ -13,27 +13,21 @@ const image = require("./controllers/image");
 const db = knex({
   client: "pg",
   connection: {
-    connectionString :"process.env.DATABASE_URL",
-    ssl: true,
+    connectionString: "process.env.DATABASE_URL",
+    ssl: true
   }
 });
-
-// db.select("*")
-//   .from("users")
-//   .then(data => {
-//     console.log(data);
-//   });
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 // app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send('it is working');
+  res.send("it is working");
 });
 
 //SIGNIN
@@ -62,7 +56,7 @@ app.post("/imageUrl", (req, res) => {
 //LISTEN ON PORT
 
 let port = process.env.PORT;
-if (port == null || port == ""){
+if (port == null || port == "") {
   port = 3000;
 }
 
