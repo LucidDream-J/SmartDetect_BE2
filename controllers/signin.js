@@ -1,6 +1,5 @@
 const handleSignin = (db, bcrypt) => (req, res) => {
   // Load hash & your password from DB.
-  console.log(req.body);
 
   const { email, password } = req.body;
   if (!email || !password) {
