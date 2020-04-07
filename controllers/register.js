@@ -3,6 +3,7 @@ const handleRegister = (req, res, db, bcrypt) => {
   if (!email || !name || !password) {
     return res.status(400).json("incorrect form submission");
   }
+  console.log("got here");
   const hash = bcrypt.hashSync(password);
   db.transaction(trx => {
     trx
@@ -23,7 +24,7 @@ const handleRegister = (req, res, db, bcrypt) => {
           .then(user => {
             res.json(user[0]);
           });
-        console.log("got here");
+        
       })
       .then(trx.commit)
       .catch(trx.rollback);
